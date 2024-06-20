@@ -23,17 +23,13 @@
 	</div>
 
 	<!-- a list of recent push events -->
-	{#if data.events.length}
+	{#if data.commits.length}
 		<div class="bg-white shadow-md rounded-lg p-4 md:col-span-1">
 			<h2 class="text-sm font-medium text-gray-500 mb-2">Recent Push Events</h2>
 			<div class="overflow-x-auto">
 				<table class="min-w-full divide-y divide-gray-200">
 					<thead class="bg-gray-50">
 						<tr>
-							<th
-								class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-								>Repository</th
-							>
 							<th
 								class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
 								>Commit Message</th
@@ -45,16 +41,11 @@
 						</tr>
 					</thead>
 					<tbody class="bg-white divide-y divide-gray-200">
-						{#each data.events as event}
+						{#each data.commits as commit}
 							<tr>
-								<td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-indigo-600">
-									<a href={event.repo.url} target="_blank" class="hover:underline"
-										>{event.repo.name}</a
-									>
-								</td>
 								<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600 flex items-center">
-									{event.payload.commits[0].message}
-									<a href={event.payload.commits[0].url} target="_blank" class="ml-2">
+									{commit.commit.message}
+									<a href={commit.url} target="_blank" class="ml-2">
 										<svg
 											xmlns="http://www.w3.org/2000/svg"
 											class="h-4 w-4 text-blue-500 hover:text-blue-700"
@@ -71,9 +62,7 @@
 										</svg>
 									</a>
 								</td>
-								<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600"
-									>{event.created_at_moment.format('LLLL')}</td
-								>
+								<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">eree</td>
 							</tr>
 						{/each}
 					</tbody>
