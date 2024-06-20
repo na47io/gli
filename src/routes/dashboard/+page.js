@@ -33,11 +33,11 @@ export async function load() {
 		const eventDate = new Date(commit.commit.author.date);
 		eventDate.setHours(0, 0, 0, 0);
 		today.setHours(0, 0, 0, 0);
-		if (eventDate.getTime() === today.getTime()) {
-			acc++;
+		if (eventDate.getTime() === today.getTime() && !acc.includes(eventDate)) {
+			return [...acc, eventDate];
 		}
 		return acc;
-	}, 0);
+	}, []).length;
 
 	// TODO get cost from the database
 	const cost = 0;
